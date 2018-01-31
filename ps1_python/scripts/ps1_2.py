@@ -29,7 +29,7 @@ def run():
     print(*peaks, sep='\n')
     H_peaks = cv2.cvtColor(np.uint8(accumulator), cv2.COLOR_GRAY2BGR)
     for peak in peaks:
-        cv2.circle(H_peaks, (peak[0], peak[1]), 2, (0, 0, 255))
+        cv2.circle(H_peaks, (peak[1], peak[0]), 2, (0, 0, 255))
     cv2.imwrite('../output/ps1-2-b-1.png', H_peaks)
     #task 3 - draw lines
     hough_lines_draw(img, '../output/ps1-2-c-1.png', peaks, rhos, thetas)
