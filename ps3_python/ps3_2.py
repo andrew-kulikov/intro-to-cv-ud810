@@ -42,10 +42,20 @@ def main():
                 lowest_residual = average_residual
                 best_M = M
             results[i][k] = average_residual
-            
+    
+    Q = best_M[:3, :3]
+    m = best_M[:, 3]
+    camera_center = - np.dot(np.linalg.inv(Q), m)
+    print(camera_center)
+    
     f = open('output/ps3-1-b-1.txt', 'w+')
     f.write('Best Projection Matrix:\n' + str(best_M) + '\nResult table:\n' + str(results))
     f.close()
+    f = open('output/ps3-1-best_m.txt', 'w+')
+    f.write(str(best_M).replace('[', '').replace(']', ''))
+    f.close()
+    
+    
 
 
 if __name__ == '__main__':
