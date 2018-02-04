@@ -2,12 +2,13 @@ import numpy as np
 import random
 from load_file import *
 from least_squares_proj_matrix import *
+from svd_proj_matrix import *
 from check_point import *
 
 
 def main():
-    points_2d = load_file('input/pts2d-pic_a.txt')
-    points_3d = load_file('input/pts3d.txt')
+    points_2d = load_file('input/pts2d-norm-pic_a.txt')
+    points_3d = load_file('input/pts3d-norm.txt')
     
     repeats = 10
     k_amounts = [8, 12, 16]
@@ -28,7 +29,8 @@ def main():
             not_choosen_points_3d = points_3d[not_choosen_numbers]
             
             
-            M, c = least_squares_proj_matrix(choosen_points_3d, choosen_points_2d)
+            #M, c = least_squares_proj_matrix(choosen_points_3d, choosen_points_2d)
+            M = svd_proj_matrix(choosen_points_3d, choosen_points_2d)
             residuals = []
             
             #then test given projection matrix on test points
